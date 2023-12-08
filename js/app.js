@@ -2,13 +2,13 @@ const startOfGame = document.getElementsByClassName("btn__reset")[0];
 const overlayDiv = document.getElementById('overlay');
 const h2 = overlayDiv.firstElementChild;
 const qwerty = document.getElementById("qwerty");
-const sentence = document.querySelector("#sentence");
-const ul=sentence.getElementsByTagName("ul")[0];
+const phrase = document.querySelector("#phrase");
+const ul=phrase.getElementsByTagName("ul")[0];
 const lives = document.querySelectorAll(".tries");
 const keyrows = document.getElementsByClassName("keyrow");
 const overlay = document.getElementById("overlay");
 let missed = 0;
-const sentences = [
+const phrases = [
     "The wheel of fortune turns for you",
     "Your fate is in your hands and on the wheel",
     "Take a spin on the wheel of destiny",
@@ -28,13 +28,13 @@ startOfGame.addEventListener("click",function(){
 
 function getRandomPhraseAsArray(arr){
   let n=Math.floor((Math.random()*8) +1);
-  let sentenceArray = arr[n].split("");
-  return sentenceArray;
+  let phraseArray = arr[n].split("");
+  return phraseArray;
 }
 
 
 
-const sentenceArray = getRandomPhraseAsArray(sentences);
+const phraseArray = getRandomPhraseAsArray(phrases);
 
 
 
@@ -57,12 +57,12 @@ arr.forEach(function(e){
 
 }
 
-addASentence(sentenceArray);
+addASentence(phraseArray);
 
 
 
 function replacePhraseToDisplay(arr){
-sentence.innerHTML=" ";
+phrase.innerHTML=" ";
 let newUl =document.createElement("ul");
 arr.forEach(function(e){
     let li= document.createElement("li");
@@ -74,7 +74,7 @@ arr.forEach(function(e){
     }
       newUl.appendChild(li);
 });
-sentence.appendChild(newUl);
+phrase.appendChild(newUl);
 }
 
 
@@ -100,7 +100,7 @@ Array.from(letters).forEach(function(letter){
 function reset (){
 startOfGame.textContent="Reset Game";
 startOfGame.addEventListener("click", ()=>{
-replacePhraseToDisplay(getRandomPhraseAsArray(sentences));
+replacePhraseToDisplay(getRandomPhraseAsArray(phrases));
   missed=0;
   for(var i=0; i<lives.length;i++){
     lives[i].style.display="";
@@ -131,6 +131,9 @@ checkWin();
           element.classList.remove('chosen');
           element.disabled = false;
       });
+
+   
+
 function checkWin(){
 let title = document.querySelectorAll(".title")[0];
 var letterCount = document.querySelectorAll(".letter");

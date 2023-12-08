@@ -88,6 +88,10 @@ button {
   border-radius: 5px;
 }
 
+.letter:hover {
+    background: lightblue;
+}
+
 .space {
   width: 15px;
 }
@@ -109,6 +113,11 @@ button {
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
+}
+
+.chosen:active {
+    
+    background: red;
 }
 
 .btn__reset {
